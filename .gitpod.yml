@@ -19,8 +19,7 @@ tasks:
         psql -U gitpod -c 'CREATE EXTENSION unaccent;' -d inventory &&
         pipenv run init && 
         pipenv run migrate && 
-        pipenv run upgrade;
-    - command: >
+        pipenv run upgrade &&
         pipenv run start;
     - command: python3 docs/assets/greeting.py back
       #openMode: 
