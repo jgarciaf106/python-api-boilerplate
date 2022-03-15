@@ -9,9 +9,3 @@ if environment == "back":
     1. Get inside the environment  {blue("$ pipenv shell")}
     2. Start the server by typing {blue("$ pipenv run start")}
     """)
-if environment == "front":
-    print(f"""
-    This terminal is for 💻 front-end!
-    
-    1. Start webpack dev server {blue("$ npm run start")}
-    """)
