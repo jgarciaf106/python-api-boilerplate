@@ -23,7 +23,7 @@ tasks:
     - command: >
         ((sed -i /BACKEND_URL/d .env && echo "" >> .env && echo "BACKEND_URL=https://3001-${GITPOD_WORKSPACE_URL:8}" >> .env) || true) && 
         python docs/assets/greeting.py front
-      openMode: 
+      #openMode: 
       
 vscode:
   extensions:
