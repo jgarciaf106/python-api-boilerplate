@@ -35,7 +35,7 @@ def create_user():
     user = User.query.filter_by(username=username, password=password).first()
 
     if user:
-        return jsonify({"msg": "Client already exists."}), 401
+        return jsonify({"msg": "User already exists."}), 401
     else:
         new_user = User()
         new_user.username = username
@@ -81,13 +81,13 @@ def new_category():
     if not cat_description:
         return jsonify({"msg": "Please enter a valid category description."}), 400
     else:
-        new_category = Product()
+        new_category = Category()
         new_category.cat_code = cat_code
         new_category.description = cat_description
 
         db.session.add(new_category)
         db.session.commit()
-        return jsonify({"msg": "The product has being successfully created."}), 200
+        return jsonify({"msg": "The Category has being successfully created."}), 200
     
 # update user
 @api.route("/updateuser/<id>", methods=["PUT"])
