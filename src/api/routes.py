@@ -18,8 +18,8 @@ def handle_hello():
     return jsonify(response_body), 200
 
 # create user
-@api.route("/registration", methods=['POST'])
-def register_user():
+@api.route("/createuser", methods=['POST'])
+def create_user():
 
     username = request.json.get("username", None)
     name = request.json.get("name", None)
@@ -72,7 +72,7 @@ def new_product():
 
 # create new category
 @api.route("/createcategory", methods=["POST"])
-def new_product():
+def new_category():
     cat_code = request.json.get("catcode", None)
     cat_description = request.json.get("description", None)
     
@@ -154,12 +154,12 @@ def update_category(id):
 # delete user
 @api.route("/deleteuser/<id>", methods=["DELETE"])
 def delete_user(id):
-    del_category = User.query.get(id)
+    del_user = User.query.get(id)
     
-    if del_category is None:
+    if del_user is None:
         raise APIException("There is not user to delete", status_code=404)
 
-    db.session.delete(del_category)
+    db.session.delete(del_user)
     db.session.commit()
     return jsonify({"msg": "The user has being successfully deleted."}), 200
 
