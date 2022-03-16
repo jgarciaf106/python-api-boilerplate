@@ -36,16 +36,16 @@ class Category(db.Model):
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    prod_id = db.Column(db.Integer, unique=True, nullable=False)
+    prod_code = db.Column(db.Integer, unique=True, nullable=False)
     cat_code = db.Column(db.Integer, db.ForeignKey('category.cat_code'), unique=False, nullable=False)
     description = db.Column(db.String(250), unique=False, nullable=False)
 
     def __repr__(self):
-        return '<Product %r>' % self.prod_id
+        return '<Product %r>' % self.prod_code
 
     def serialize(self):
         return {
-            "prod_id": self.prod_id,
+            "prod_id": self.prod_code,
             "prod_id": self.cat_code,
             "description": self.description,
             # do not serialize the password, its a security breach
