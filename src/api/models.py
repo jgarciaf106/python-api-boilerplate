@@ -37,7 +37,7 @@ class Category(db.Model):
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     prod_code = db.Column(db.Integer, unique=True, nullable=False)
-    cat_code = db.Column(db.Integer, db.ForeignKey('category.cat_code'), unique=False, nullable=False)
+    cat_code = db.Column(db.Integer, unique=False, nullable=False)
     description = db.Column(db.String(250), unique=False, nullable=False)
 
     def __repr__(self):
