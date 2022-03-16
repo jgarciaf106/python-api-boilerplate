@@ -13,10 +13,6 @@ php_errorlog
 
 # track webpack configs (i.e. do NOT ignore it)
 !composer.json
-!webpack.config.js
-!package.json
-!webpack.production.js
-!webpack.development.js
 
 # track readme.md in the root (i.e. do NOT ignore it)
 !README.md
@@ -53,8 +49,6 @@ Thumbs.db
 *.tar
 *.zip
 
-# ignore node/grunt dependency directories
-node_modules/
 
 # webpack output
 dist/*

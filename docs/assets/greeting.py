@@ -4,7 +4,7 @@ def blue(_str):
 environment = sys.argv.pop(1)
 if environment == "back":
     print(f"""
-    Hello 😁 ! This terminal will represent your 🐍  backend!
+    This terminal will represent your 🐍  backend!
     
     1. Get inside the environment  {blue("$ pipenv shell")}
     2. Start the server by typing {blue("$ pipenv run start")}
