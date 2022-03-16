@@ -186,3 +186,20 @@ def delete_category(id):
     db.session.delete(del_category)
     db.session.commit()
     return jsonify({"msg": "The category has being successfully deleted."}), 200
+
+# get all products
+@api.route('/getproducts', methods=['GET'])
+def get_products():  
+    products = Product.query.all()
+    products = list(map(lambda prd : prd.serialize(), products))  
+    
+    return jsonify({"results": products, "message": "Inventory Products"}), 200
+
+
+# get all categories
+@api.route('/getcategories', methods=['GET'])
+def get_categories():  
+    categories = Product.query.all()
+    categories = list(map(lambda cat : cat.serialize(), categories))  
+    
+    return jsonify({"results": categories, "message": "inventory Categories"}), 200
