@@ -4,7 +4,7 @@ db = SQLAlchemy()
         
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    username = db.Column(db.Integer, unique=True, nullable=False)
+    username = db.Column(db.String(120), unique=True, nullable=False)
     name = db.Column(db.String(120), unique=False, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
@@ -48,5 +48,4 @@ class Product(db.Model):
             "prod_id": self.prod_code,
             "prod_id": self.cat_code,
             "description": self.description,
-            # do not serialize the password, its a security breach
         }
