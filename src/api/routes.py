@@ -199,7 +199,7 @@ def get_products():
 # get all categories
 @api.route('/getcategories', methods=['GET'])
 def get_categories():  
-    categories = Product.query.all()
+    categories = Category.query.all()
     categories = list(map(lambda cat : cat.serialize(), categories))  
     
     return jsonify({"results": categories, "message": "inventory Categories"}), 200
