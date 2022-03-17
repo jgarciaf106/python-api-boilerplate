@@ -106,7 +106,7 @@ def update_user(id):
     if password is None:
         return jsonify({"msg": "Please enter a valid password."}), 400
 
-    update_user = User.query.filter_by(id=id).first()
+    update_user = User.query.filter_by(username=id).first()
     update_user.username = user_name
     update_user.name = name
     update_user.password = password
@@ -128,7 +128,7 @@ def update_product(id):
     if prod_description is None:
         return jsonify({"msg": "Please enter a valid prodcut description."}), 400
 
-    update_product = Product.query.filter_by(id=id).first()
+    update_product = Product.query.filter_by(category=id).first()
     update_product.prod_code = prod_code
     update_product.cat_code = prod_cat_code
     update_product.description = prod_description
@@ -147,7 +147,7 @@ def update_category(id):
     if cat_description is None:
         return jsonify({"msg": "Please enter a valid category description."}), 400
 
-    update_category = Category.query.filter_by(id=id).first()
+    update_category = Category.query.filter_by(cat_code=id).first()
     update_category.cat_code = cat_code
     update_category.description = cat_description
     
@@ -157,7 +157,7 @@ def update_category(id):
 # delete user
 @api.route("/deleteuser/<id>", methods=["DELETE"])
 def delete_user(id):
-    del_user = User.query.get(id)
+    del_user = User.query.filter_by(username=id).first()
     
     if del_user is None:
         raise APIException("There is not user to delete", status_code=404)
@@ -169,7 +169,7 @@ def delete_user(id):
 # delete product
 @api.route("/deleteproduct/<id>", methods=["DELETE"])
 def delete_product(id):
-    del_product = Product.query.get(id)
+    del_product = Product.query.filter_by(prod_code=id).first()
     
     if del_product is None:
         raise APIException("There is not product to delete", status_code=404)
@@ -181,7 +181,7 @@ def delete_product(id):
 # delete category
 @api.route("/deletecategory/<id>", methods=["DELETE"])
 def delete_category(id):
-    del_category = Category.query.get(id)
+    del_category = Category.query.filter(cat_code=id).first()
     
     if del_category is None:
         raise APIException("There is not category to delete", status_code=404)
