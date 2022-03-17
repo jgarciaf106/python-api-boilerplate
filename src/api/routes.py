@@ -33,7 +33,7 @@ def create_user():
     if not password:
         return jsonify({"msg": "Please provide a valid password."}), 400
     if not is_admin:
-        return jsonify({"msg": "Please providea valid admin status."}), 400
+        return jsonify({"msg": "Please provide a valid admin status."}), 400
     
     user = User.query.filter_by(username=username, password=password).first()
 

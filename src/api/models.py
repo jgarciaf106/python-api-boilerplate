@@ -45,7 +45,7 @@ class Product(db.Model):
 
     def serialize(self):
         return {
-            "prod_id": self.prod_code,
-            "prod_id": self.cat_code,
+            "prod_code": self.prod_code,
+            "cat_code": self.cat_code,
             "description": self.description,
         }
