@@ -24,6 +24,7 @@ def create_user():
     username = request.json.get("username", None)
     name = request.json.get("name", None)
     password = request.json.get("password", None)
+    is_admin = request.json.get("isadmin", None)
 
     if not username:
         return jsonify({"msg": "Please provide a valid username."}), 400
@@ -31,6 +32,8 @@ def create_user():
         return jsonify({"msg": "Please provide a valid full name."}), 400
     if not password:
         return jsonify({"msg": "Please provide a valid password."}), 400
+    if not is_admin:
+        return jsonify({"msg": "Please providea valid admin status."}), 400
     
     user = User.query.filter_by(username=username, password=password).first()
 
@@ -41,7 +44,7 @@ def create_user():
         new_user.username = username
         new_user.name = name
         new_user.password = password
-        new_user.is_active = True
+        new_user.is_admin = is_admin
 
         db.session.add(new_user)
         db.session.commit()
@@ -221,4 +224,4 @@ def login_user():
     if user is None:
         return jsonify({"msg": "Invalid username or password"}), 401
     else:
-        return jsonify({"Access": "Granted"}), 200
+        return jsonify({"access": "Granted", "is_admin":user.is_admin}), 200
