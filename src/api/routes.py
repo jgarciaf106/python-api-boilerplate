@@ -181,7 +181,7 @@ def delete_product(id):
 # delete category
 @api.route("/deletecategory/<id>", methods=["DELETE"])
 def delete_category(id):
-    del_category = Category.query.filter(cat_code=id).first()
+    del_category = Category.query.filter_by(cat_code=id).first()
     
     if del_category is None:
         raise APIException("There is not category to delete", status_code=404)
