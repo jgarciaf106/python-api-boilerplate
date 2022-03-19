@@ -129,7 +129,7 @@ def update_product(id):
     if prod_description is None:
         return jsonify({"msg": "Please enter a valid prodcut description."}), 400
 
-    update_product = Product.query.filter_by(category=id).first()
+    update_product = Product.query.filter_by(prod_code=id).first()
     update_product.prod_code = prod_code
     update_product.cat_code = prod_cat_code
     update_product.description = prod_description
