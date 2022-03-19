@@ -7,7 +7,7 @@ class User(db.Model):
     username = db.Column(db.String(120), unique=True, nullable=False)
     name = db.Column(db.String(120), unique=False, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    is_admin = db.Column(db.boolean, unique=False, nullable=False)
+    is_admin = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __repr__(self):
         return '<User %r>' % self.username
