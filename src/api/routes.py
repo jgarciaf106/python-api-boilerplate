@@ -25,7 +25,7 @@ def create_user():
     username = request.json.get("username", None)
     name = request.json.get("name", None)
     password = request.json.get("password", None)
-    is_admin = request.json.get("isadmin", None).capitalize()
+    is_admin = request.json.get("isadmin", None)
 
     if not username:
         return jsonify({"msg": "Please provide a valid username."}), 400
