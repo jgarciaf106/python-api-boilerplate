@@ -207,6 +207,14 @@ def get_categories():
     
     return jsonify({"results": categories, "message": "inventory Categories"}), 200
 
+# get all users
+@api.route('/getusers', methods=['GET'])
+def get_users():  
+    users = User.query.all()
+    users = list(map(lambda usr : usr.serialize(), users))  
+    
+    return jsonify({"results": users, "message": "inventory users"}), 200
+
 # user log in
 @api.route('/userlogin', methods=['POST'])
 def login_user():
