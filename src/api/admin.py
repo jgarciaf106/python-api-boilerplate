@@ -3,7 +3,7 @@ import os
 from flask import Flask, Response
 from flask_admin import Admin
 from flask_basicauth import BasicAuth
-from .models import db, User, Category, Product
+from .models import db, User
 from flask_admin.contrib.sqla import ModelView
 from werkzeug.exceptions import HTTPException
 
@@ -32,10 +32,8 @@ def setup_admin(app):
             return redirect(basic_auth.challenge())
 
     # Add your models here, for example this is how we add a the User model to the admin
-    admin = Admin(app, name='Inventory Admin', template_mode='bootstrap3')
+    admin = Admin(app, name='Admin Name', template_mode='bootstrap3')
     admin.add_view(MyModelView(User, db.session))
-    admin.add_view(MyModelView(Category, db.session))
-    admin.add_view(MyModelView(Product, db.session))
 
     # You can duplicate that line to add mew models
     # admin.add_view(ModelView(YourModelName, db.session))
