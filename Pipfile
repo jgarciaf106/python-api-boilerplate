@@ -20,7 +20,7 @@ flask-admin = "*"
 flask-basicauth = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"
 
 [scripts]
 start="flask run -p 3001 -h 0.0.0.0"
@@ -29,3 +29,4 @@ migrate="flask db migrate"
 local="heroku local"
 upgrade="flask db upgrade"
 reset_db="bash ./docs/assets/reset_migrations.bash"
+local_build = "bash ./docs/assets/reset_migrations_local.bash"
